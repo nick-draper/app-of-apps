@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gotham-mcsss
+  name: gotham-mcss
   namespace: argocd
   labels:
     environment: production
