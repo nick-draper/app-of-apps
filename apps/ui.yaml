@@ -8,10 +8,10 @@ spec:
   source:
     repoURL: https://github.com/nick-draper/app-set.git
     targetRevision: HEAD
-    path: ngnix
+    path: nginx
   destination:
     server: https://kubernetes.default.svc
-    namespace: frontend-namespace
+    namespace: gotham-mcss-ui
   syncPolicy:
     automated:
       prune: true
