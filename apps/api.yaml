@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gotham-mcss-api
+  name: gotham-api
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/nick-draper/app-set.git
+    repoURL: https://github.com/nick-draper/vidly-api.git
     targetRevision: main
-    path: nginx
+    path: app
   destination:
     server: https://kubernetes.default.svc
-    namespace: gotham-mcss-api
+    namespace: gotham-api
   syncPolicy:
     automated:
       prune: true
