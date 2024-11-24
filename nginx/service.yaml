@@ -5,7 +5,7 @@ metadata:
   namespace: gotham-web
 spec:
   selector:
-    app: nginx
+    app: gotham-web
   ports:
   - name: http
     port: 80
