@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/nick-draper/vidly-db.git
     targetRevision: main
-    path: nginx
+    path: apps
   destination:
     server: https://kubernetes.default.svc
     namespace: gotham-db
