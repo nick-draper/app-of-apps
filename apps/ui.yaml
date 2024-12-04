@@ -15,8 +15,7 @@ spec:
         autoSync: true
         prune: true
       - env: prod
-        autoSync: false
-        prune: false
+        automated: null
   template:
     metadata:
       name: 'nginx-{{.env}}'
@@ -35,4 +34,7 @@ spec:
       syncPolicy:
         automated:
           prune: {{ .prune }}
+    {{ else }}
+      syncPolicy:
+        automated: {{ .automated }}    
     {{- end }}
