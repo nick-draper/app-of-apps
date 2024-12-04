@@ -17,13 +17,8 @@ spec:
     spec:
       project: default
       syncPolicy:
-        {{ if eq .env "prod" }}
         automated:
-          prune: false
-        {{ else }}
-        automated:
-          prune: true          
-        {{ end }}
+          prune: {{ if eq .env "prod" }}false{{ else }}true{{ end }}
       source:
         repoURL: https://github.com/nick-draper/app-set.git
         targetRevision: '{{ if eq .env "prod" }}main{{ else }}{{.env}}{{ end }}'
