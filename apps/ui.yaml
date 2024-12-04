@@ -11,6 +11,7 @@ spec:
       - env: dev
       - env: qa
       - env: prod
+      - autoSync: true
       - true: true
       - false: false
   template:
@@ -27,7 +28,7 @@ spec:
         namespace: '{{ if eq .env "prod" }}nginx{{ else }}nginx-{{.env}}{{ end }}'
   templatePatch: |
     spec:
-    {{- if eq .env "prod" }}
+    {{- if .autoSync }}
       syncPolicy:
         automated:
           prune: {{ .false }}
