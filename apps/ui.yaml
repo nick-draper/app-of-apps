@@ -18,8 +18,7 @@ spec:
       project: default
       syncPolicy:
         automated:
-          prune: '{{ if eq .env "prod" }}"true"{{ else }}"false"{{ end }}'
-          selfHeal: '{{ if eq .env "prod" }}"true"{{ else }}"false"{{ end }}'
+          prune: '{{ if eq .env "prod" }}true{{ else }}false{{ end }}'
       source:
         repoURL: https://github.com/nick-draper/app-set.git
         targetRevision: '{{ if eq .env "prod" }}main{{ else }}{{.env}}{{ end }}'
