@@ -29,9 +29,6 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ if eq .env "prod" }}nginx{{ else }}nginx-{{.env}}{{ end }}'
-      syncPolicy:
-        syncOptions:
-        - CreateNamespace=true
   templatePatch: |
     spec:
     {{- if .autoSync }}
