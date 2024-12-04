@@ -12,7 +12,11 @@ spec:
         autoSync: true
         prune: true
       - env: qa
+        autoSync: true
+        prune: true
       - env: prod
+        autoSync: false
+        prune: false
   template:
     metadata:
       name: 'nginx-{{.env}}'
