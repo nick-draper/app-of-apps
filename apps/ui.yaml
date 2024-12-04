@@ -15,7 +15,7 @@ spec:
         autoSync: true
         prune: true
       - env: prod
-        autoSync: true
+        autoSync: false
         prune: false
   template:
     metadata:
@@ -29,6 +29,9 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ if eq .env "prod" }}nginx{{ else }}nginx-{{.env}}{{ end }}'
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
   templatePatch: |
     spec:
     {{- if .autoSync }}
