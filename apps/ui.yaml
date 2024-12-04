@@ -33,8 +33,8 @@ spec:
     {{- if .autoSync }}
       syncPolicy:
         automated:
-          prune: {{ .prune }}
-    {{ else }}
+          prune: {{ .prune }}  
+    {{- else }}
       syncPolicy:
-        automated: {{ .automated }}    
+        automated: {{ .automated }}  
     {{- end }}
