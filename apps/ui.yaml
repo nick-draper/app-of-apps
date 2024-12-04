@@ -9,11 +9,14 @@ spec:
   - list:
       elements:
       - env: dev
+        autoSync: true
+        prune: true
       - env: qa
+        autoSync: true
+        prune: true
       - env: prod
-      - autoSync: true
-      - true: true
-      - false: false
+        autoSync: false
+        prune: false
   template:
     metadata:
       name: 'nginx-{{.env}}'
@@ -31,9 +34,5 @@ spec:
     {{- if .autoSync }}
       syncPolicy:
         automated:
-          prune: {{ .false }}
-    {{ else }}
-      syncPolicy:
-        automated:
-          prune: {{ .true }}
+          prune: {{ .prune }}
     {{- end }}
