@@ -9,19 +9,20 @@ spec:
   - list:
       elements:
       - env: dev
-        autoSync: true
-        prune: true
+      - autoSync: true
+      - prune: true
       - env: qa
-        autoSync: true
-        prune: true
+      - noAutoSync: false
+      - noPrune: false
       - env: prod
-        autoSync: false
-        prune: false
   template:
     metadata:
       name: 'nginx-{{.env}}'
     spec:
       project: default
+      syncPolicy:
+        automated:
+          prune: '{{ if eq .env "prod" }}{{ .prune }}{{ else }}{{.noPrune}}{{ end }}'
       source:
         repoURL: https://github.com/nick-draper/app-set.git
         targetRevision: '{{ if eq .env "prod" }}main{{ else }}{{.env}}{{ end }}'
@@ -29,10 +30,3 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ if eq .env "prod" }}nginx{{ else }}nginx-{{.env}}{{ end }}'
-  templatePatch: |
-    spec:
-    {{- if .autoSync }}
-      syncPolicy:
-        automated:
-          prune: {{ .prune }}
-    {{- end }}
