@@ -12,8 +12,6 @@ spec:
         autoSync: true
         prune: true
       - env: qa
-        autoSync: true
-        prune: true
       - env: prod
   template:
     metadata:
